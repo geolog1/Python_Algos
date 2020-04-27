@@ -7,3 +7,25 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+
+
+import random
+print("Загадано число от 0 до 100. Уагадай его!")
+
+NUMB = random.randint(0, 100)
+vib = int(input("Начни угадывать: "))
+pop = 10
+while vib != NUMB:
+    if vib > NUMB:
+        print("Меньше...")
+    else:
+        print("Больше...")
+    if pop == 0:
+        break
+    vib = int(input("Ваше предположение: "))
+    pop -= 1
+
+if vib != NUMB:
+    print("ты не угадал за 10 попыток. Это было число: ",NUMB)
+else:
+    print("Молодец, угадал")
