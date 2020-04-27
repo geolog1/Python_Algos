@@ -12,3 +12,17 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+
+NUMB = int(input('Введите число: '))
+
+even = 0
+odd = 0
+
+while NUMB > 0:
+    if NUMB % 2 == 0:
+        even += 1
+    else:
+        odd += 1
+    NUMB = NUMB // 10
+
+print("Четные: %d, Нечетные: %d" % (even, odd))
