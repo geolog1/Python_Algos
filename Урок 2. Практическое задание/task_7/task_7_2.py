@@ -5,3 +5,17 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+def recur(numb, s=0, m=1):
+    # Рекурсия
+    if s == m:
+        print(f"Равенство: {s == m}")
+
+    elif s < m:
+        return recur(numb, s+1, numb * (numb + 1) // 2)
+
+try:
+    NUMB = int(input('Введите натуральное число: '))
+    recur(NUMB)
+except ValueError:
+    print('Вы ввели не число, а строку. Поправьтесь')
