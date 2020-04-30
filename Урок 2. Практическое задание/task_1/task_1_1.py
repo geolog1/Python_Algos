@@ -32,3 +32,52 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+
+while True:
+    ACTION = input("Введите действие: (+ , - , * , /) или \"0\" для выхода: ")
+    if ACTION == '0':
+        break
+    if ACTION in "+-*/":
+        try:
+            NUMB_1 = int(input('введите число №1: '))
+            NUMB_2 = int(input('введите число №2: '))
+            if ACTION == '+':
+                RES = NUMB_1 + NUMB_2
+            elif ACTION == '-':
+                RES = NUMB_1 - NUMB_2
+            elif ACTION == '*':
+                RES = NUMB_1 * NUMB_2
+            elif ACTION == '/':
+                if NUMB_2 != 0:
+                    RES = NUMB_1 / NUMB_2
+                else:
+                    print("Делить на ноль нельзя!")
+                    continue
+
+            print(f'Результат {NUMB_1} {ACTION} {NUMB_2} = {RES}')
+        except ValueError:
+            print("Вы ввели строку, исправьте!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
