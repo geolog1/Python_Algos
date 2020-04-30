@@ -8,3 +8,16 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+def recur(i, numb, n, sum):
+    # Рекурсия
+    if i == n:
+        print(f"Количество элементов: {n}, их сумма: {sum}")
+    elif i < n:
+        return recur (i+1, numb / 2 * -1, n, sum+numb)
+
+try:
+    N = int(input("Введите количество элементов: "))
+    recur(0, 1, N, 0)
+except ValueError:
+    print("Вы ввели строку. Введите число!")
