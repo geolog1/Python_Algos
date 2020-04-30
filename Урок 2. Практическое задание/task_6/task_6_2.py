@@ -7,3 +7,26 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+
+import random
+
+def recur(pop, numb):
+    # Рекурсия
+    print(f"Попытка #{pop}")
+    answer = int(input("Загадано число от 0 до 100. Уагадай его: "))
+    if pop == 10 or answer == numb:
+        if answer == numb:
+            print("Молодец, угадал")
+        else:
+            print(f"Не угадал за 10 попыток. Загаданное число было: {numb}")
+    else:
+        if answer > numb:
+            print(f"Меньше чем {answer}")
+        else:
+            print(f"Больше чем {answer}")
+        recur(pop+1,numb)
+
+
+recur(1, random.randint(0,100))
+
