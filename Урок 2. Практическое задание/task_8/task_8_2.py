@@ -12,3 +12,24 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+COUNT = 0
+
+def recur(n, b):
+    global COUNT
+    if n == 0:
+        return f"Было введено {count} цифр {b}"
+    m = int(input(f"Число: "))
+    while m > 0:
+        if m % 10 == b:
+            COUNT += 1
+        m = m // 10
+
+    return recur(n-1, b)
+
+try:
+    N = int(input("Сколько будет чисел? "))
+    B = int(input("Какую цифру считать? "))
+    print(recur(N, B))
+except ValueError:
+    print("Это не число. Исправьтесь!")
