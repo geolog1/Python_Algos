@@ -15,3 +15,30 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+def rec(numb, even=0, odd=0):
+
+    # все цифры извлечены
+    if numb == 0:
+        return even, odd
+    else:
+        # достаем очередную цифру числа
+        cur_n = numb % 10
+        # число становится короче
+        numb = numb // 10
+        # проверяем на четность/нечетность
+        if cur_n % 2 == 0:
+            even += 1
+            return rec(numb, even, odd)
+        else:
+            odd += 1
+            return rec(numb, even, odd)
+
+try:
+    numb = int(input('Введите число: '))
+    print(f"Количество четных и нечетных цифр равно: {rec(numb)}")
+except ValueError:
+    print("Ошибка. Введите число")
+
+
+
