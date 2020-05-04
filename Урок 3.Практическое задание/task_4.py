@@ -3,3 +3,15 @@
 
 Подсказка: можно применить ф-цию max с параметром key
 """
+
+import random
+
+def func(lst):
+    print(f'Исходный массив: {lst}')
+    # key параметром функции max() является функция, которая вычисляет ключ,
+    # который используется для определения того, как ранжировать элементы
+    numb = max(lst, key=lst.count)
+    print(f'Число {numb} встречается {lst.count(numb)} раз(а)')
+
+LST = [random.randint(-100, 100) for i in range(250)]
+func(LST)
