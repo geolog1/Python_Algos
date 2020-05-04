@@ -10,3 +10,25 @@
 Пример:
 Исходный массив: [8, 3, 15, 6, 4, 2], результат: [0, 3, 4, 5]
 """
+
+# с помощью цикла
+
+def func(mass_1):
+    mass_2 = []
+    for elem in mass_1:
+        if elem % 2 == 0:
+            mass_2.append(mass_1.index(elem))
+    print(f"Исходный массив: {mass_1}, результат: {mass_2}")
+
+
+def func2(mass_1):
+    print(
+        f"Исходный массив {mass_1}, результат: "
+        f"{[elem for elem in range(len(mass_1)) if mass_1[elem] % 2 == 0]}"
+    )
+
+
+
+MASS_1 = [84, 23, 24, 9219, 2, 25, 4777, -11, 12, 44]
+func(MASS_1)
+func2(MASS_1)
