@@ -12,3 +12,49 @@
 ВНИМАНИЕ: ЗАДАНИЯ, В КОТОРЫХ БУДУТ ГОЛЫЕ ЦИФРЫ ЗАМЕРОВ (БЕЗ АНАЛИТИКИ)
 БУДУТ ПРИНИМАТЬСЯ С ОЦЕНКОЙ УДОВЛЕТВОРИТЕЛЬНО
 """
+
+"""
+Задача: Напишите программу, доказывающую или проверяющую, что для множества
+натуральных чисел выполняется равенство: 1+2+...+n = n(n+1)/2,
+ где n - любое натуральное число.
+
+Используется цикл и рекурсия. 
+Вместо пользовательского ввода - рандомизатор целых чисел
+ """
+
+from timeit import Timer
+from random import randint
+
+
+# Рекурсия
+def recur(numb, s=0, m=1):
+    if s == m:
+        print(f"Равенство: {s == m}")
+
+    elif s < m:
+        return recur(numb, s+1, numb * (numb + 1) // 2)
+
+
+NUMB = randint(1, 100)
+recur(NUMB)
+
+
+
+# Цикл
+def f_cycle():
+    n = randint(1, 100)
+    s = 0
+    for i in range(1,n+1):
+        s += i
+    m = n * (n + 1) // 2
+    print('Вычисление левой части равенства: ',s)
+    print('Вычисление правой части равенства: ',m)
+
+f_cycle()
+
+
+
+t1 = Timer("recur(numb, s=0, m=1)", "from __main__ import recur")
+print("recur ", t1.timeit(number=100), "milliseconds")
+t2 = Timer("f_cycle()", "from __main__ import f_cycle")
+print("f_cycle ", t2.timeit(number=1000), "milliseconds")
