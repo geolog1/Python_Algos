@@ -12,3 +12,90 @@
 ВНИМАНИЕ: ЗАДАНИЯ, В КОТОРЫХ БУДУТ ГОЛЫЕ ЦИФРЫ ЗАМЕРОВ (БЕЗ АНАЛИТИКИ)
 БУДУТ ПРИНИМАТЬСЯ С ОЦЕНКОЙ УДОВЛЕТВОРИТЕЛЬНО
 """
+
+
+# Задача 1
+from memory_profiler import profile
+from random import randint
+
+@profile
+def func(lst):
+    max_val = max(lst)
+    min_val = min(lst)
+    ind_max = lst.index(max_val)
+    ind_min = lst.index(min_val)
+
+    print(
+        f"В данном массиве максимальное число {max_val:3} стоит на {ind_max:3} позиции, "
+        f"а минимальное число {min_val:3} стоит на {ind_min:3} позиции"
+    )
+
+    print("Заменяем их")
+    print(lst)
+
+    lst[ind_max], lst[ind_min] = min_val, max_val
+    ind_max = lst.index(max_val)
+    ind_min = lst.index(min_val)
+    print(
+        f"В данном массиве максимальное число {max_val:3} стоит на {ind_max:3} позиции, "
+        f"а минимальное число {min_val:3} стоит на {ind_min:3} позиции"
+    )
+
+    print(lst)
+
+
+LST = [randint(-1000, 1000) for i in range(20000)]
+func(LST)
+
+
+# Задача 2
+"""
+В диапазоне натуральных чисел от 2 до 999 определить,
+сколько из них кратны каждому из чисел в диапазоне от 2 до 9.
+Подсказка: используйте вложенный цикл
+"""
+@profile
+def func_2():
+    a = [0] * 8
+    for i in range(2,1000):
+        for j in range (2,10):
+            if i % j == 0:
+                a[j-2] += 1
+    i = 0
+    while i < len(a):
+        print(f'В диапазоне 2-999 : {a[i]} чисел кратны {i + 2}')
+        i += 1
+
+func_2()
+
+
+# Задача 3
+"""Определить, какое число в массиве встречается чаще всего
+Подсказка: можно применить ф-цию max с параметром key
+"""
+import random
+
+@profile
+def func(lst):
+    print(f'Исходный массив: {lst}')
+    numb = max(lst, key=lst.count)
+    print(f'Число {numb} встречается {lst.count(numb)} раз')
+
+LST = [random.randint(-1000, 1000) for i in range(20000)]
+func(LST)
+
+
+
+"""
+Комментарии к задаче:
+Приведенные выше примеры задач разнятся по времени, однако, по объему памяти почти не отличаются
+(с учетом разрядности параметра Increment).
+
+Основной объем памяти расходуется на декоратор @profile, 
+параметр Increment имеет сравнительно малые значения по памяти благодаря использованию генераторов.
+
+
+# Версия Python 3.8
+# Разрядность ОС - 64 бит
+
+"""
